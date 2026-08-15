@@ -1,0 +1,103 @@
+.ctabanner {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  background: var(--gradient-primary-diag);
+  border-radius: var(--radius-lg);
+  padding: 36px 44px;
+  position: relative;
+  overflow: hidden;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+  background-size: 200% 200%;
+  animation: gradientShift 6s ease infinite;
+}
+
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.ctabanner:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 40px rgba(139, 92, 246, 0.3);
+}
+
+.ctabanner::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    circle at 80% 0%,
+    rgba(255, 255, 255, 0.15),
+    transparent 60%
+  );
+}
+
+.ctabanner__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.25);
+  color: #fff;
+  flex-shrink: 0;
+  position: relative;
+  z-index: 1;
+  transition: transform 0.4s ease;
+}
+
+.ctabanner:hover .ctabanner__icon {
+  transform: rotate(15deg) scale(1.15);
+}
+
+.ctabanner__text {
+  flex: 1;
+  position: relative;
+  z-index: 1;
+}
+
+.ctabanner__text h3 {
+  color: #fff;
+  font-size: 1.4rem;
+  margin-bottom: 4px;
+}
+
+.ctabanner__text p {
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 0.95rem;
+}
+
+.ctabanner .btn--white {
+  background: #fff;
+  color: var(--color-violet);
+  flex-shrink: 0;
+  position: relative;
+  z-index: 1;
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.ctabanner .btn--white:hover {
+  transform: translateY(-3px) scale(1.03);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+}
+
+@media (max-width: 768px) {
+  .ctabanner {
+    flex-direction: column;
+    text-align: center;
+    padding: 32px 24px;
+  }
+}
