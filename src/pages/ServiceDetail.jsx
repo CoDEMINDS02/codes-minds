@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link, useParams, Navigate } from "react-router-dom";
-import { ArrowRight, CheckCircle2, ChevronRight } from "lucide-react";
+import { ArrowRight, CheckCircle2, ChevronRight, Clock } from "lucide-react";
 import HeroVisual from "../components/HeroVisual";
 import StatBar from "../components/StatBar";
 import ProcessSteps from "../components/ProcessSteps";
@@ -15,6 +15,7 @@ function ServiceDetail() {
   const { slug } = useParams();
   const { services, loading } = useServices();
   const service = getServiceBySlug(services, slug);
+  const isComingSoon = service?.status === "coming-soon";
 
   const [projects, setProjects] = useState([]);
   const [projectsLoading, setProjectsLoading] = useState(true);
@@ -69,6 +70,11 @@ function ServiceDetail() {
               <span className="eyebrow">
                 {service.title.toUpperCase()} SERVICES
               </span>
+              {isComingSoon && (
+                <span className="service-detail__soon-badge">
+                  <Clock size={12} /> Coming Soon
+                </span>
+              )}
               <h1>
                 {service.heroLines.map((line, i) => (
                   <span
@@ -84,6 +90,14 @@ function ServiceDetail() {
               </h1>
               <p>{service.heroDesc}</p>
 
+              {isComingSoon && (
+                <p className="service-detail__soon-note">
+                  This service is planned for our upcoming lineup and isn't
+                  available to book yet. Get in touch and we'll let you know
+                  as soon as it launches.
+                </p>
+              )}
+
               <ul className="service-detail-hero__features">
                 {service.heroFeatures.map((f, i) => (
                   <li key={i}>
@@ -93,9 +107,15 @@ function ServiceDetail() {
               </ul>
 
               <div className="service-detail-hero__actions">
-                <Link to="/contact" className="btn btn--primary">
-                  Start Your Project <ArrowRight size={16} />
-                </Link>
+                {isComingSoon ? (
+                  <Link to="/contact" className="btn btn--outline">
+                    Get Notified <ArrowRight size={16} />
+                  </Link>
+                ) : (
+                  <Link to="/contact" className="btn btn--primary">
+                    Start Your Project <ArrowRight size={16} />
+                  </Link>
+                )}
                 <Link to="/services" className="btn btn--outline">
                   View All Services
                 </Link>
@@ -117,7 +137,7 @@ function ServiceDetail() {
         </div>
       </section>
 
-      <StatBar stats={service.stats} />
+      {service.stats?.length > 0 && <StatBar stats={service.stats} />}
 
       <section className="section">
         <div className="container">
@@ -125,7 +145,9 @@ function ServiceDetail() {
             <span className="eyebrow">WHAT WE OFFER</span>
             <h2>
               {service.title}{" "}
-              <span className="gradient-text">That Deliver Results</span>
+              <span className="gradient-text">
+                {isComingSoon ? "We're Planning" : "That Deliver Results"}
+              </span>
             </h2>
             <p>{service.shortDesc}</p>
           </div>
@@ -152,7 +174,7 @@ function ServiceDetail() {
         </div>
       </section>
 
-      {!projectsLoading && projects.length > 0 && (
+      {!isComingSoon && !projectsLoading && projects.length > 0 && (
         <section className="section service-detail-work">
           <div className="container">
             <div className="section-header">
@@ -234,10 +256,18 @@ function ServiceDetail() {
       </section>
 
       <section className="section service-detail-cta">
-        <CTABanner
-          title={`Ready To Get Started With ${service.title}?`}
-          subtitle="Let's build something amazing together."
-        />
+        {isComingSoon ? (
+          <CTABanner
+            title={`Interested In ${service.title}?`}
+            subtitle="Let us know and we'll notify you when it's available."
+            buttonText="Get Notified"
+          />
+        ) : (
+          <CTABanner
+            title={`Ready To Get Started With ${service.title}?`}
+            subtitle="Let's build something amazing together."
+          />
+        )}
       </section>
     </>
   );

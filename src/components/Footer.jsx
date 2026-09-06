@@ -1,13 +1,34 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import { FaFacebookF, FaLinkedinIn, FaWhatsapp } from "react-icons/fa";
 import { Phone, Mail, MapPin, Send } from "lucide-react";
 import { useServices } from "../hooks/useServices";
+import { subscribeNewsletter } from "../api/newsletter";
 import logo from "../assets/logo.png";
 import "./Footer.css";
 
 function Footer() {
   const { services } = useServices();
   const year = new Date().getFullYear();
+
+  const [email, setEmail] = useState("");
+  const [subStatus, setSubStatus] = useState("idle"); // idle | loading | success | error
+  const [subMessage, setSubMessage] = useState("");
+
+  const handleSubscribe = async (e) => {
+    e.preventDefault();
+    setSubStatus("loading");
+    setSubMessage("");
+    try {
+      const res = await subscribeNewsletter(email);
+      setSubStatus("success");
+      setSubMessage(res.message || "Subscribed! Thanks for joining.");
+      setEmail("");
+    } catch (error) {
+      setSubStatus("error");
+      setSubMessage(error.message || "Something went wrong. Try again.");
+    }
+  };
 
   return (
     <footer className="footer">
@@ -95,23 +116,38 @@ function Footer() {
         <div className="footer__col footer__newsletter">
           <h4>Newsletter</h4>
           <p>Subscribe to get updates and exclusive offers.</p>
-          <form
-            className="footer__newsletter-form"
-            onSubmit={(e) => e.preventDefault()}
-          >
-            <input type="email" placeholder="Enter your email" required />
-            <button type="submit" aria-label="Subscribe">
+          <form className="footer__newsletter-form" onSubmit={handleSubscribe}>
+            <input
+              type="email"
+              placeholder="Enter your email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+              disabled={subStatus === "loading"}
+            />
+            <button
+              type="submit"
+              aria-label="Subscribe"
+              disabled={subStatus === "loading"}
+            >
               <Send size={18} />
             </button>
           </form>
+          {subMessage && (
+            <p
+              className={`footer__newsletter-status footer__newsletter-status--${subStatus}`}
+            >
+              {subMessage}
+            </p>
+          )}
         </div>
       </div>
 
       <div className="container footer__bottom">
         <p>© {year} CØDES-MINDS. All Rights Reserved.</p>
         <div className="footer__legal">
-          <a href="#">Privacy Policy</a>
-          <a href="#">Terms & Conditions</a>
+          <Link to="/privacy-policy">Privacy Policy</Link>
+          <Link to="/terms-conditions">Terms & Conditions</Link>
         </div>
       </div>
     </footer>

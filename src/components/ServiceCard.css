@@ -96,3 +96,34 @@
 .servicecard--skyblue {
   --card-color: #0ea5e9;
 }
+
+/* Coming-soon services keep the same layout but read as muted/unavailable,
+   so they never look like something currently being sold. */
+.servicecard--soon {
+  opacity: 0.68;
+  filter: grayscale(0.35);
+}
+
+.servicecard--soon:hover {
+  opacity: 0.92;
+  transform: translateY(-3px);
+}
+
+.servicecard__badge {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  color: var(--color-text-muted);
+}

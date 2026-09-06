@@ -10,7 +10,7 @@ import { resolveImage } from "../api/config";
 import { iconOptions } from "../data/iconMap";
 import "./admin.css";
 
-const emptyForm = { title: "", description: "", icon: iconOptions[0], order: 0 };
+const emptyForm = { title: "", description: "", icon: iconOptions[0], order: 0, status: "active" };
 
 function AdminServices() {
   const [services, setServices] = useState([]);
@@ -47,6 +47,7 @@ function AdminServices() {
       description: service.description,
       icon: service.icon || iconOptions[0],
       order: service.order ?? 0,
+      status: service.status || "active",
     });
     setImageFile(null);
     setError("");
@@ -65,6 +66,7 @@ function AdminServices() {
     fd.append("description", form.description);
     fd.append("icon", form.icon);
     fd.append("order", form.order);
+    fd.append("status", form.status);
     if (imageFile) fd.append("image", imageFile);
 
     try {
@@ -117,6 +119,7 @@ function AdminServices() {
                 <th>Title</th>
                 <th>Icon</th>
                 <th>Order</th>
+                <th>Status</th>
                 <th></th>
               </tr>
             </thead>
@@ -137,6 +140,9 @@ function AdminServices() {
                   <td>{s.title}</td>
                   <td>{s.icon}</td>
                   <td>{s.order}</td>
+                  <td>
+                    {s.status === "coming-soon" ? "Coming Soon" : "Active"}
+                  </td>
                   <td>
                     <div className="admin-table__actions">
                       <button className="admin-icon-btn" onClick={() => openEdit(s)}>
@@ -207,6 +213,16 @@ function AdminServices() {
                     onChange={(e) => setForm({ ...form, order: e.target.value })}
                   />
                 </div>
+              </div>
+              <div>
+                <label>Status</label>
+                <select
+                  value={form.status}
+                  onChange={(e) => setForm({ ...form, status: e.target.value })}
+                >
+                  <option value="active">Active</option>
+                  <option value="coming-soon">Coming Soon</option>
+                </select>
               </div>
               <div>
                 <label>Image</label>

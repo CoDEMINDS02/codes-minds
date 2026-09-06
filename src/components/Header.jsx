@@ -136,6 +136,10 @@ function Header() {
               )}
             </div>
 
+            <NavLink to="/web-series" className="header__link">
+              Web Series
+            </NavLink>
+
             <NavLink to="/contact" className="header__link">
               Contact
             </NavLink>

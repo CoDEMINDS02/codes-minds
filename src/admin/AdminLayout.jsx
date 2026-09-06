@@ -3,6 +3,7 @@ import {
   LayoutDashboard,
   Layers,
   FolderKanban,
+  Clapperboard,
   Users,
   MessageSquare,
   LogOut,
@@ -15,6 +16,7 @@ const navItems = [
   { to: "/admin", label: "Dashboard", icon: LayoutDashboard, end: true },
   { to: "/admin/services", label: "Services", icon: Layers },
   { to: "/admin/portfolio", label: "Portfolio", icon: FolderKanban },
+  { to: "/admin/web-series", label: "Web Series", icon: Clapperboard },
   { to: "/admin/team", label: "Team", icon: Users },
   { to: "/admin/messages", label: "Messages", icon: MessageSquare },
 ];

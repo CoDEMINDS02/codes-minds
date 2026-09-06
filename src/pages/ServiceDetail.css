@@ -15,6 +15,32 @@
   color: var(--color-text);
 }
 
+.service-detail__soon-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-left: 10px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  padding: 4px 12px;
+  border-radius: 999px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  color: var(--color-text-muted);
+  vertical-align: middle;
+}
+
+.service-detail__soon-note {
+  color: var(--color-text-muted);
+  font-size: 0.9rem;
+  max-width: 540px;
+  margin: -8px 0 20px;
+  padding: 12px 16px;
+  border-left: 2px solid var(--color-border);
+}
+
 .service-detail-hero__grid {
   display: grid;
   grid-template-columns: 1.2fr 0.8fr;

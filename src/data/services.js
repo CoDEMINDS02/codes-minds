@@ -22,6 +22,7 @@ export const staticServices = [
     heroImage: "/services/web-development.jpg",
     icon: Code2,
     color: "violet",
+    status: "active",
     title: "Web Development",
     shortDesc:
       "Fast, secure & scalable websites built with modern technologies for your business.",
@@ -35,12 +36,7 @@ export const staticServices = [
       "SEO Friendly & Fast Performance",
       "Secure & Scalable Code",
     ],
-    stats: [
-      { value: "150+", label: "Websites Delivered" },
-      { value: "100%", label: "Client Satisfaction" },
-      { value: "5+", label: "Years Experience" },
-      { value: "24/7", label: "Support Available" },
-    ],
+    stats: [],
     offerings: [
       {
         title: "Custom Website Development",
@@ -109,6 +105,7 @@ export const staticServices = [
     heroImage: "/services/wordpress-development.jpg",
     icon: Globe,
     color: "blue",
+    status: "active",
     title: "WordPress Development",
     shortDesc:
       "SEO-friendly, responsive WordPress websites that are easy to manage.",
@@ -122,12 +119,7 @@ export const staticServices = [
       "Fully Responsive",
       "Easy to Manage",
     ],
-    stats: [
-      { value: "150+", label: "WordPress Projects" },
-      { value: "98%", label: "Client Satisfaction" },
-      { value: "5+", label: "Years Experience" },
-      { value: "24/7", label: "Support Available" },
-    ],
+    stats: [],
     offerings: [
       {
         title: "Custom WordPress Website Development",
@@ -212,6 +204,7 @@ export const staticServices = [
     heroImage: "/services/ui-ux-design.jpg",
     icon: Palette,
     color: "teal",
+    status: "coming-soon",
     title: "UI/UX Design",
     shortDesc:
       "Creative, user-centered designs that enhance user experience and drive engagement.",
@@ -225,13 +218,7 @@ export const staticServices = [
       "Pixel Perfect Design",
       "High Converting Designs",
     ],
-    stats: [
-      { value: "150+", label: "Projects Completed" },
-      { value: "80+", label: "Happy Clients" },
-      { value: "5+", label: "Years Experience" },
-      { value: "99%", label: "Client Satisfaction" },
-      { value: "100%", label: "Focus On Quality" },
-    ],
+    stats: [],
     offerings: [
       {
         title: "User Research & Analysis",
@@ -321,6 +308,7 @@ export const staticServices = [
     heroImage: "/services/graphic-design.jpg",
     icon: PenTool,
     color: "pink",
+    status: "coming-soon",
     title: "Graphic Design",
     shortDesc:
       "Eye-catching visuals that communicate your brand message effectively.",
@@ -334,13 +322,7 @@ export const staticServices = [
       "High Quality Deliverables",
       "On-Time Delivery",
     ],
-    stats: [
-      { value: "250+", label: "Projects Completed" },
-      { value: "150+", label: "Happy Clients" },
-      { value: "5+", label: "Years Experience" },
-      { value: "99%", label: "Client Satisfaction" },
-      { value: "24/7", label: "Support Available" },
-    ],
+    stats: [],
     offerings: [
       {
         title: "Logo Design",
@@ -418,6 +400,7 @@ export const staticServices = [
     heroImage: "/services/video-editing.jpg",
     icon: Video,
     color: "orange",
+    status: "coming-soon",
     title: "Video Editing",
     shortDesc:
       "Professional video editing that engages, inspires and drives results.",
@@ -429,15 +412,9 @@ export const staticServices = [
       "Cinematic Quality",
       "Fast Turnaround Time",
       "Unlimited Revisions",
-      "100% Client Satisfaction",
+      "Client-Focused Revisions",
     ],
-    stats: [
-      { value: "300+", label: "Videos Delivered" },
-      { value: "150+", label: "Happy Clients" },
-      { value: "5+", label: "Years Experience" },
-      { value: "99%", label: "Client Satisfaction" },
-      { value: "24/7", label: "Support Available" },
-    ],
+    stats: [],
     offerings: [
       {
         title: "YouTube Video Editing",
@@ -519,6 +496,7 @@ export const staticServices = [
     heroImage: "/services/ecommerce-solutions.jpg",
     icon: ShoppingCart,
     color: "gold",
+    status: "coming-soon",
     title: "E-Commerce Solutions",
     shortDesc:
       "Powerful e-commerce stores that convert visitors into loyal customers.",
@@ -532,13 +510,7 @@ export const staticServices = [
       "Seamless Shopping Experience",
       "Growth Focused Solutions",
     ],
-    stats: [
-      { value: "200+", label: "Stores Built" },
-      { value: "150+", label: "Happy Clients" },
-      { value: "5+", label: "Years Experience" },
-      { value: "99%", label: "Client Satisfaction" },
-      { value: "24/7", label: "Support Available" },
-    ],
+    stats: [],
     offerings: [
       {
         title: "E-commerce Website Development",
@@ -632,6 +604,7 @@ export const staticServices = [
     heroImage: "/services/seo-optimization.jpg",
     icon: TrendingUp,
     color: "green",
+    status: "coming-soon",
     title: "SEO Optimization",
     shortDesc:
       "Rank higher, get found faster and grow your business with result-driven SEO.",
@@ -645,13 +618,7 @@ export const staticServices = [
       "Better Conversions",
       "Long-Term Growth",
     ],
-    stats: [
-      { value: "200+", label: "Websites Optimized" },
-      { value: "150+", label: "Happy Clients" },
-      { value: "5+", label: "Years Experience" },
-      { value: "99%", label: "Client Satisfaction" },
-      { value: "24/7", label: "Support Available" },
-    ],
+    stats: [],
     offerings: [
       {
         title: "Keyword Research & Strategy",
@@ -747,6 +714,7 @@ export const staticServices = [
     heroImage: "/services/website-maintenance.jpg",
     icon: ShieldCheck,
     color: "skyblue",
+    status: "coming-soon",
     title: "Website Maintenance",
     shortDesc:
       "We keep your website secure, updated and running at its best performance.",
@@ -760,13 +728,7 @@ export const staticServices = [
       "Performance Optimization",
       "24/7 Uptime Monitoring",
     ],
-    stats: [
-      { value: "150+", label: "Websites Maintained" },
-      { value: "99.9%", label: "Uptime Guarantee" },
-      { value: "5+", label: "Years Experience" },
-      { value: "100%", label: "Client Satisfaction" },
-      { value: "24/7", label: "Support Available" },
-    ],
+    stats: [],
     offerings: [
       {
         title: "Regular Updates & Management",
@@ -873,6 +835,10 @@ export function mergeServiceContent(apiServices) {
         image: resolvedImage,
         heroImage: resolvedImage || base.heroImage,
         order: api.order ?? base.order,
+        // The database is the source of truth once the status migration has
+        // run. Fall back to the static default so the site still behaves
+        // correctly if the API hasn't been redeployed with the field yet.
+        status: api.status || base.status || "active",
       };
     }
 
@@ -895,6 +861,7 @@ export function mergeServiceContent(apiServices) {
       process: [],
       tools: [],
       order: api.order ?? 0,
+      status: api.status || "active",
     };
   });
 

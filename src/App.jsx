@@ -8,12 +8,16 @@ import Services from "./pages/Services";
 import ServiceDetail from "./pages/ServiceDetail";
 import Portfolio from "./pages/Portfolio";
 import Contact from "./pages/Contact";
+import WebSeries from "./pages/WebSeries";
+import PrivacyPolicy from "./pages/PrivacyPolicy";
+import TermsConditions from "./pages/TermsConditions";
 import ProtectedRoute from "./admin/ProtectedRoute";
 import AdminLogin from "./admin/AdminLogin";
 import AdminLayout from "./admin/AdminLayout";
 import AdminDashboard from "./admin/AdminDashboard";
 import AdminServices from "./admin/AdminServices";
 import AdminPortfolio from "./admin/AdminPortfolio";
+import AdminWebSeries from "./admin/AdminWebSeries";
 import AdminTeam from "./admin/AdminTeam";
 import AdminMessages from "./admin/AdminMessages";
 import "./App.css";
@@ -42,6 +46,9 @@ function App() {
             <Route path="/services/:slug" element={<ServiceDetail />} />
             <Route path="/portfolio" element={<Portfolio />} />
             <Route path="/contact" element={<Contact />} />
+            <Route path="/web-series" element={<WebSeries />} />
+            <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+            <Route path="/terms-conditions" element={<TermsConditions />} />
           </Route>
 
           <Route path="/admin/login" element={<AdminLogin />} />
@@ -51,6 +58,7 @@ function App() {
               <Route index element={<AdminDashboard />} />
               <Route path="services" element={<AdminServices />} />
               <Route path="portfolio" element={<AdminPortfolio />} />
+              <Route path="web-series" element={<AdminWebSeries />} />
               <Route path="team" element={<AdminTeam />} />
               <Route path="messages" element={<AdminMessages />} />
             </Route>
