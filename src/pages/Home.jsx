@@ -104,15 +104,15 @@ function Home() {
             </p>
           </div>
           <div className="home-intro-video__frame">
-            <video
-              src="/videos/codes-minds-intro.mp4"
-              autoPlay
-              muted
-              loop
-              playsInline
-              controls
-            />
-          </div>
+  <video
+    src="https://res.cloudinary.com/o8iikg0u/video/upload/v1788716333/WhatsApp_Video_2026-08-11_at_8.26.41_PM_p0j3ko.mp4"
+    autoPlay
+    muted
+    loop
+    playsInline
+    controls
+  />
+</div>
         </div>
       </section>
 
