@@ -1,4 +1,4 @@
-import path from "path";
+﻿import path from "path";
 import { fileURLToPath } from "url";
 import express from "express";
 import cors from "cors";
@@ -30,19 +30,19 @@ app.use(express.urlencoded({ extended: true }));
 app.use("/uploads", express.static(path.join(__dirname, "..", "uploads")));
 
 // Health check
-app.get("/api/health", (req, res) => {
+app.get("/health", (req, res) => {
   res.json({ status: "ok", message: "Codes Minds API is running" });
 });
 
 // Routes
-app.use("/api/auth", authRoutes);
-app.use("/api/services", serviceRoutes);
-app.use("/api/portfolio", portfolioRoutes);
-app.use("/api/team", teamRoutes);
-app.use("/api/contact", contactRoutes);
-app.use("/api/newsletter", newsletterRoutes);
-app.use("/api/web-series", webSeriesRoutes);
-app.use("/api/uploads", uploadRoutes);
+app.use("/auth", authRoutes);
+app.use("/services", serviceRoutes);
+app.use("/portfolio", portfolioRoutes);
+app.use("/team", teamRoutes);
+app.use("/contact", contactRoutes);
+app.use("/newsletter", newsletterRoutes);
+app.use("/web-series", webSeriesRoutes);
+app.use("/uploads", uploadRoutes);
 
 // 404 handler
 app.use((req, res) => {
@@ -60,3 +60,5 @@ app.use((err, req, res, next) => {
 });
 
 export default app;
+
+
