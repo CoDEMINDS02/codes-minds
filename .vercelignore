@@ -1,4 +1,4 @@
-﻿backend
-api
-node_modules
+﻿node_modules
 .git
+backend/node_modules
+public/videos
