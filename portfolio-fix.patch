@@ -1,0 +1,67 @@
+diff --git a/backend/src/app.js b/backend/src/app.js
+index ee0db50..5d30e31 100644
+--- a/backend/src/app.js
++++ b/backend/src/app.js
+@@ -1,4 +1,4 @@
+-﻿import path from "path";
++import path from "path";
+ import { fileURLToPath } from "url";
+ import express from "express";
+ import cors from "cors";
+@@ -30,19 +30,25 @@ app.use(express.urlencoded({ extended: true }));
+ app.use("/uploads", express.static(path.join(__dirname, "..", "uploads")));
+ 
+ // Health check
+-app.get("/health", (req, res) => {
++app.get("/api/health", (req, res) => {
+   res.json({ status: "ok", message: "Codes Minds API is running" });
+ });
+ 
+ // Routes
+-app.use("/auth", authRoutes);
+-app.use("/services", serviceRoutes);
+-app.use("/portfolio", portfolioRoutes);
+-app.use("/team", teamRoutes);
+-app.use("/contact", contactRoutes);
+-app.use("/newsletter", newsletterRoutes);
+-app.use("/web-series", webSeriesRoutes);
+-app.use("/uploads", uploadRoutes);
++// NOTE: these must be mounted with the "/api" prefix. The Vercel rewrite in
++// vercel.json ("/api/:path*" -> "/api/index.js") forwards the ORIGINAL
++// request path (e.g. "/api/portfolio") into this Express app - it does not
++// strip "/api". Mounting routes at "/portfolio" instead of "/api/portfolio"
++// means Express never matches anything and every request 404s, which is
++// what was silently breaking the whole API (portfolio, services, team, etc.)
++app.use("/api/auth", authRoutes);
++app.use("/api/services", serviceRoutes);
++app.use("/api/portfolio", portfolioRoutes);
++app.use("/api/team", teamRoutes);
++app.use("/api/contact", contactRoutes);
++app.use("/api/newsletter", newsletterRoutes);
++app.use("/api/web-series", webSeriesRoutes);
++app.use("/api/uploads", uploadRoutes);
+ 
+ // 404 handler
+ app.use((req, res) => {
+diff --git a/package.json b/package.json
+index cb97e9a..76b1175 100644
+--- a/package.json
++++ b/package.json
+@@ -10,7 +10,17 @@
+   },
+   "dependencies": {
+     "@emailjs/browser": "^4.4.1",
++    "bcryptjs": "^2.4.3",
++    "cloudinary": "^1.41.3",
++    "cors": "^2.8.5",
++    "dotenv": "^16.6.1",
++    "express": "^4.19.2",
++    "jsonwebtoken": "^9.0.2",
+     "lucide-react": "^1.27.0",
++    "mongoose": "^8.5.0",
++    "multer": "^1.4.5-lts.1",
++    "multer-storage-cloudinary": "^4.0.0",
++    "nodemailer": "^6.9.14",
+     "react": "^19.2.7",
+     "react-dom": "^19.2.7",
+     "react-icons": "^5.7.0",
