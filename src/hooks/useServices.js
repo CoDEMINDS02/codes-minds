@@ -1,24 +1,32 @@
 import { useEffect, useState } from "react";
 import { getServices } from "../api/services";
-import { mergeServiceContent, staticServices } from "../data/services";
+import { mergeServiceContent } from "../data/services";
 
-// Fetches live services from the API and merges them with the static rich
-// content (offerings, stats, tools, etc). Falls back to the static list if
-// the backend is unreachable so the public site never breaks.
+function extractServices(response) {
+  if (Array.isArray(response)) return response;
+  if (Array.isArray(response?.data)) return response.data;
+  if (Array.isArray(response?.data?.data)) return response.data.data;
+  if (Array.isArray(response?.services)) return response.services;
+  return [];
+}
+
 export function useServices() {
-  const [services, setServices] = useState(staticServices);
+  const [services, setServices] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     let cancelled = false;
 
     getServices()
-      .then((res) => {
+      .then((response) => {
         if (cancelled) return;
-        setServices(mergeServiceContent(res.data));
+
+        const servicesData = extractServices(response);
+        setServices(mergeServiceContent(servicesData));
       })
-      .catch(() => {
-        if (!cancelled) setServices(staticServices);
+      .catch((error) => {
+        console.error("Failed to load services:", error);
+        if (!cancelled) setServices(mergeServiceContent([]));
       })
       .finally(() => {
         if (!cancelled) setLoading(false);
