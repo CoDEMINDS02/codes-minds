@@ -1,6 +1,23 @@
 import { useEffect, useState } from "react";
 import { getPortfolio } from "../api/portfolio";
 
+function extractProjects(response) {
+  const candidates = [
+    response?.data,
+    response?.data?.data,
+    response?.data?.projects,
+    response?.projects,
+  ];
+
+  for (const candidate of candidates) {
+    if (Array.isArray(candidate)) return candidate;
+  }
+
+  if (Array.isArray(response)) return response;
+
+  return [];
+}
+
 export function usePortfolio(serviceId) {
   const [projects, setProjects] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -10,16 +27,29 @@ export function usePortfolio(serviceId) {
     setLoading(true);
 
     getPortfolio(serviceId)
-      .then((res) => {
+      .then((response) => {
         if (cancelled) return;
 
-        // API response:
-        // { success: true, count: 13, data: [...] }
-        const projects = Array.isArray(res?.data)
-          ? res.data
-          : [];
+        const nextProjects = extractProjects(response).map((project) => ({
+          ...project,
+          _id: project?._id || project?.id,
+          images: Array.isArray(project?.images)
+            ? project.images.filter(Boolean)
+            : [],
+          video:
+            typeof project?.video === "string"
+              ? project.video.trim()
+              : "",
+        }));
 
-        setProjects(projects);
+        console.log("Portfolio API response:", response);
+        console.log(
+          "Portfolio projects:",
+          nextProjects.length,
+          nextProjects
+        );
+
+        setProjects(nextProjects);
       })
       .catch((error) => {
         console.error("Failed to load portfolio:", error);
