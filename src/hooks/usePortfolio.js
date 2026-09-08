@@ -13,21 +13,25 @@ export function usePortfolio(serviceId) {
       .then((res) => {
         if (cancelled) return;
 
-        // API returns { success, count, data }. Keep compatibility with
-        // direct-array responses as well.
-        const projects = Array.isArray(res?.data?.data)
-          ? res.data.data
-          : Array.isArray(res?.data)
+        // API response:
+        // { success: true, count: 13, data: [...] }
+        const projects = Array.isArray(res?.data)
           ? res.data
           : [];
 
         setProjects(projects);
       })
-      .catch(() => {
-        if (!cancelled) setProjects([]);
+      .catch((error) => {
+        console.error("Failed to load portfolio:", error);
+
+        if (!cancelled) {
+          setProjects([]);
+        }
       })
       .finally(() => {
-        if (!cancelled) setLoading(false);
+        if (!cancelled) {
+          setLoading(false);
+        }
       });
 
     return () => {
