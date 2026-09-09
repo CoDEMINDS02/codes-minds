@@ -80,6 +80,7 @@
   display: flex;
   flex-direction: column;
   height: 100%;
+  min-width: 0;
 }
 
 .portfolio-card:hover {
@@ -128,6 +129,7 @@
   display: flex;
   flex-direction: column;
   flex: 1;
+  min-width: 0;
 }
 
 .portfolio-card__tags {
@@ -150,6 +152,8 @@
   font-size: 1.15rem;
   margin-bottom: 8px;
   min-height: 2.6em;
+  overflow-wrap: break-word;
+  word-break: break-word;
 }
 
 .portfolio-card__body p {
@@ -163,6 +167,8 @@
 
   overflow: hidden;
   text-overflow: ellipsis;
+  overflow-wrap: break-word;
+  word-break: break-word;
 
   flex: 1;
 }
@@ -193,7 +199,9 @@
   max-height: 90vh;
 
   overflow-y: auto;
+  overflow-x: hidden;
   position: relative;
+  min-width: 0;
 }
 
 .portfolio-modal__close {
@@ -240,6 +248,9 @@
 
 .portfolio-modal__body {
   padding: 24px;
+  min-width: 0;
+  overflow-wrap: break-word;
+  word-break: break-word;
 }
 
 .portfolio-modal__client {
