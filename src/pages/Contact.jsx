@@ -23,7 +23,7 @@ const contactCards = [
   {
     icon: Mail,
     title: "Email Us",
-    lines: ["anoshacod@gmail.com", "We reply within 24 hours"],
+    lines: ["codeminds.team@gmail.com", "We reply within 24 hours"],
   },
   {
     icon: MapPin,
@@ -235,7 +235,7 @@ function Contact() {
                 <Phone size={16} /> +92 317 0939872
               </li>
               <li>
-                <Mail size={16} /> anoshacod@gmail.com
+                <Mail size={16} /> codeminds.team@gmail.com
               </li>
             </ul>
             <a

@@ -73,7 +73,7 @@ export default function TermsConditions() {
           <h2>9. Contact Us</h2>
           <p>
             For questions about these Terms & Conditions, contact us at{" "}
-            <a href="mailto:anoshacod@gmail.com">anoshacod@gmail.com</a> or
+            <a href="mailto:codeminds.team@gmail.com">codeminds.team@gmail.com</a> or
             via our <a href="/contact">contact page</a>.
           </p>
         </div>

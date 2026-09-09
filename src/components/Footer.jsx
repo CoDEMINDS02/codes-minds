@@ -105,7 +105,7 @@ function Footer() {
               <Phone size={16} /> +92 317 0939872
             </li>
             <li>
-              <Mail size={16} /> anoshacod@gmail.com
+              <Mail size={16} /> codeminds.team@gmail.com
             </li>
             <li>
               <MapPin size={16} /> Karachi, Pakistan

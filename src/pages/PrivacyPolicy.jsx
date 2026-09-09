@@ -75,7 +75,7 @@ export default function PrivacyPolicy() {
           <h2>8. Contact Us</h2>
           <p>
             If you have any questions about this Privacy Policy, contact us
-            at <a href="mailto:anoshacod@gmail.com">anoshacod@gmail.com</a>{" "}
+            at <a href="mailto:codeminds.team@gmail.com">codeminds.team@gmail.com</a>{" "}
             or via our{" "}
             <a href="/contact">contact page</a>.
           </p>
