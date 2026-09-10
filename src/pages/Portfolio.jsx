@@ -14,6 +14,10 @@ function Portfolio() {
 
   const [hoveredId, setHoveredId] = useState(null);
   const [selectedProject, setSelectedProject] = useState(null);
+    const openProject = (project) => {
+    setSelectedProject(project);
+    window.dispatchEvent(new Event("codesminds:modalOpened"));
+  };
 
   const stats = [
     { value: `${projects.length}+`, label: "Projects Completed" },
@@ -116,7 +120,7 @@ function Portfolio() {
                 <div
                   key={project._id}
                   className="portfolio-card"
-                  onClick={() => setSelectedProject(project)}
+                                    onClick={() => openProject(project)}
                   onMouseEnter={() => setHoveredId(project._id)}
                   onMouseLeave={() => setHoveredId(null)}
                 >

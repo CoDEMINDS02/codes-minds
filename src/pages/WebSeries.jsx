@@ -17,9 +17,10 @@ function WebSeries() {
       .finally(() => setLoading(false));
   }, []);
 
-  const openEpisode = (episode) => {
+    const openEpisode = (episode) => {
     setSelected(episode);
     setActiveImage(0);
+    window.dispatchEvent(new Event("codesminds:modalOpened"));
   };
 
   const closeEpisode = () => {

@@ -48,6 +48,12 @@ function Header() {
   }, [location.pathname]);
 
   useEffect(() => {
+    const closeNav = () => setMobileOpen(false);
+    window.addEventListener("codesminds:modalOpened", closeNav);
+    return () => window.removeEventListener("codesminds:modalOpened", closeNav);
+  }, []);
+
+  useEffect(() => {
     document.body.style.overflow = mobileOpen ? "hidden" : "";
 
     return () => {
