@@ -5,6 +5,7 @@
   min-height: 570px;
   margin: 0 auto;
   isolation: isolate;
+  overflow: hidden;
 }
 
 /* ================================

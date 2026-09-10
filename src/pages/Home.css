@@ -380,6 +380,7 @@
   transform-style: preserve-3d;
   transition: transform 0.15s ease-out;
   animation: heroFadeIn 1s ease-out forwards;
+  overflow: hidden;
 }
 
 .home-hero__photo::before {
