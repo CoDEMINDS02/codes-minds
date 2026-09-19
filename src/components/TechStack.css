@@ -1,0 +1,108 @@
+.tech-stack {
+  background: #0a0a0a;
+  overflow: hidden;
+}
+
+/* Wrapper masks the edges so icons fade in/out instead of hard-cutting */
+.tech-stack__marquee-wrapper {
+  margin-top: 48px;
+  overflow: hidden;
+  width: 100%;
+  -webkit-mask-image: linear-gradient(
+    90deg,
+    transparent 0%,
+    #000 8%,
+    #000 92%,
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    90deg,
+    transparent 0%,
+    #000 8%,
+    #000 92%,
+    transparent 100%
+  );
+}
+
+.tech-stack__marquee-track {
+  display: flex;
+  width: max-content;
+  gap: 24px;
+  animation: tech-stack-scroll 25s linear infinite;
+}
+
+/* Pause the scroll on hover so users can read a label if they want */
+.tech-stack__marquee-wrapper:hover .tech-stack__marquee-track {
+  animation-play-state: paused;
+}
+
+@keyframes tech-stack-scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    /* Track is duplicated (2x items), so -50% is exactly one full loop */
+    transform: translateX(-50%);
+  }
+}
+
+.tech-stack__item {
+  flex: 0 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  width: 160px;
+  padding: 28px 16px;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  transition: transform 0.25s ease, border-color 0.25s ease,
+    background 0.25s ease;
+}
+
+.tech-stack__item:hover {
+  transform: translateY(-6px);
+  border-color: rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.tech-stack__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 48px;
+}
+
+.tech-stack__label {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--color-text-muted, #a1a1aa);
+  text-align: center;
+}
+
+@media (max-width: 640px) {
+  .tech-stack__item {
+    width: 120px;
+    padding: 20px 10px;
+  }
+
+  .tech-stack__marquee-track {
+    animation-duration: 18s;
+  }
+}
+
+/* Respect users who've asked for reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .tech-stack__marquee-track {
+    animation: none;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .tech-stack__marquee-wrapper {
+    -webkit-mask-image: none;
+    mask-image: none;
+  }
+}
