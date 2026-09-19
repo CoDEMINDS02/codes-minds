@@ -11,10 +11,9 @@ import HeroVisual from "../components/HeroVisual";
 import "./Home.css";
 
 const homeStats = [
-  { value: "150+", label: "Projects Completed" },
-  { value: "80+", label: "Happy Clients" },
-  { value: "5+", label: "Years Experience" },
-  { value: "25+", label: "Team Members" },
+  { value: "14+", label: "Projects Completed" },
+  { value: "5+", label: "Happy Clients" },
+  { value: "1+", label: "Years Experience" },
   { value: "99%", label: "Client Satisfaction" },
 ];
 
