@@ -5,6 +5,7 @@ import StatBar from "../components/StatBar";
 import ServiceCard from "../components/ServiceCard";
 import CTABanner from "../components/CTABanner";
 import TechStack from "../components/TechStack";
+import ProcessSection from "../components/ProcessSection";
 import { useServices } from "../hooks/useServices";
 import { usePortfolio } from "../hooks/usePortfolio";
 import { resolveImage } from "../api/config";
@@ -141,6 +142,8 @@ function Home() {
       </section>
 
       <TechStack />
+
+      <ProcessSection />
 
       <section className="section home-projects">
         <div className="container">
