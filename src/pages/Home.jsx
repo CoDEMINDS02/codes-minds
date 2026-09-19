@@ -4,6 +4,7 @@ import { ArrowRight, Star } from "lucide-react";
 import StatBar from "../components/StatBar";
 import ServiceCard from "../components/ServiceCard";
 import CTABanner from "../components/CTABanner";
+import TechStack from "../components/TechStack";
 import { useServices } from "../hooks/useServices";
 import { usePortfolio } from "../hooks/usePortfolio";
 import { resolveImage } from "../api/config";
@@ -138,6 +139,8 @@ function Home() {
           </div>
         </div>
       </section>
+
+      <TechStack />
 
       <section className="section home-projects">
         <div className="container">
