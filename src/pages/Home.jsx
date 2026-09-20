@@ -1,6 +1,7 @@
+import { useRef } from "react";
 import ContactForm from '../components/Contact/ContactForm';
 import { Link } from "react-router-dom";
-import { ArrowRight, Star } from "lucide-react";
+import { ArrowRight, Star, ChevronLeft, ChevronRight } from "lucide-react";
 import StatBar from "../components/StatBar";
 import ServiceCard from "../components/ServiceCard";
 import CTABanner from "../components/CTABanner";
@@ -8,6 +9,7 @@ import TechStack from "../components/TechStack";
 import ProcessSection from "../components/ProcessSection";
 import WhatWeDeliver from "../components/WhatWeDeliver";
 import ProductsPreview from "../components/ProductsPreview";
+import HeroSlider from "../components/HeroSlider";
 import { useServices } from "../hooks/useServices";
 import { usePortfolio } from "../hooks/usePortfolio";
 import { resolveImage } from "../api/config";
@@ -45,22 +47,30 @@ const testimonials = [
 function Home() {
   const { services } = useServices();
   const { projects } = usePortfolio();
+  const heroSliderRef = useRef(null);
 
   return (
     <>
-      <section className="home-hero section">
+      <section className="home-hero section" style={{ position: "relative" }}>
+        <button
+          className="home-hero__nav home-hero__nav--prev"
+          onClick={() => heroSliderRef.current?.goPrev()}
+          aria-label="Previous slide"
+        >
+          <ChevronLeft size={22} />
+        </button>
+
+        <button
+          className="home-hero__nav home-hero__nav--next"
+          onClick={() => heroSliderRef.current?.goNext()}
+          aria-label="Next slide"
+        >
+          <ChevronRight size={22} />
+        </button>
+
         <div className="container home-hero__grid">
           <div className="home-hero__content">
-            <span className="badge">WELCOME TO CØDES-MINDS</span>
-            <h1>
-              We Code Ideas.{" "}
-              <span className="gradient-text">You Get Results.</span>
-            </h1>
-            <p>
-              We are a creative digital agency delivering modern web solutions,
-              stunning designs, and digital experiences that help your business
-              grow and stand out.
-            </p>
+            <HeroSlider ref={heroSliderRef} />
             <div className="home-hero__actions">
               <Link to="/services" className="btn btn--primary">
                 Explore Our Services <ArrowRight size={16} />
