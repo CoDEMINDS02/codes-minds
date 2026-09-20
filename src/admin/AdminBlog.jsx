@@ -13,7 +13,7 @@ const emptyForm = {
   title: "",
   excerpt: "",
   content: "",
-  author: "CØDES-MINDS Team",
+  author: "CÃ˜DES-MINDS Team",
   status: "published",
 };
 
@@ -51,7 +51,7 @@ function AdminBlog() {
       title: post.title,
       excerpt: post.excerpt,
       content: post.content,
-      author: post.author || "CØDES-MINDS Team",
+      author: post.author || "CÃ˜DES-MINDS Team",
       status: post.status || "published",
     });
     setImageFile(null);

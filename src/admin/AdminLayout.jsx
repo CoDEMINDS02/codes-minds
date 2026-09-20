@@ -36,7 +36,7 @@ function AdminLayout() {
     <div className="admin">
       <aside className="admin-sidebar">
         <div className="admin-sidebar__brand">
-          <img src={logo} alt="CØDES-MINDS" />
+          <img src={logo} alt="CÃ˜DES-MINDS" />
         </div>
 
         <nav className="admin-sidebar__nav">

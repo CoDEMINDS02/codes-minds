@@ -28,7 +28,7 @@ const blogSchema = new mongoose.Schema(
     },
     author: {
       type: String,
-      default: "CØDES-MINDS Team",
+      default: "CÃ˜DES-MINDS Team",
     },
     status: {
       type: String,

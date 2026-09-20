@@ -7,7 +7,7 @@ function extractBlogs(response) {
   return [];
 }
 
-// List hook — used on the public Blog listing page
+// List hook â€” used on the public Blog listing page
 export function useBlogs() {
   const [blogs, setBlogs] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -36,7 +36,7 @@ export function useBlogs() {
   return { blogs, loading };
 }
 
-// Single-post hook — used on the Blog detail page
+// Single-post hook â€” used on the Blog detail page
 export function useBlogPost(slug) {
   const [post, setPost] = useState(null);
   const [loading, setLoading] = useState(true);
