@@ -6,6 +6,7 @@ import {
   Clapperboard,
   Users,
   MessageSquare,
+  Newspaper,
   LogOut,
 } from "lucide-react";
 import { useAuth } from "../context/AuthContext";
@@ -17,6 +18,7 @@ const navItems = [
   { to: "/admin/services", label: "Services", icon: Layers },
   { to: "/admin/portfolio", label: "Portfolio", icon: FolderKanban },
   { to: "/admin/web-series", label: "Web Series", icon: Clapperboard },
+  { to: "/admin/blog", label: "Blog", icon: Newspaper },
   { to: "/admin/team", label: "Team", icon: Users },
   { to: "/admin/messages", label: "Messages", icon: MessageSquare },
 ];
@@ -34,7 +36,7 @@ function AdminLayout() {
     <div className="admin">
       <aside className="admin-sidebar">
         <div className="admin-sidebar__brand">
-          <img src={logo} alt="CÃ˜DES-MINDS" />
+          <img src={logo} alt="CØDES-MINDS" />
         </div>
 
         <nav className="admin-sidebar__nav">

@@ -10,6 +10,7 @@ import teamRoutes from "./routes/teamRoutes.js";
 import contactRoutes from "./routes/contactRoutes.js";
 import newsletterRoutes from "./routes/newsletterRoutes.js";
 import webSeriesRoutes from "./routes/webSeriesRoutes.js";
+import blogRoutes from "./routes/blogRoutes.js";
 import uploadRoutes from "./routes/uploadRoutes.js";
 
 const __filename = fileURLToPath(import.meta.url);
@@ -48,6 +49,7 @@ app.use("/api/team", teamRoutes);
 app.use("/api/contact", contactRoutes);
 app.use("/api/newsletter", newsletterRoutes);
 app.use("/api/web-series", webSeriesRoutes);
+app.use("/api/blog", blogRoutes);
 app.use("/api/uploads", uploadRoutes);
 
 // 404 handler

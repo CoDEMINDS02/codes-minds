@@ -9,6 +9,8 @@ import ServiceDetail from "./pages/ServiceDetail";
 import Portfolio from "./pages/Portfolio";
 import Contact from "./pages/Contact";
 import WebSeries from "./pages/WebSeries";
+import Blog from "./pages/Blog";
+import BlogDetail from "./pages/BlogDetail";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import TermsConditions from "./pages/TermsConditions";
 import ProtectedRoute from "./admin/ProtectedRoute";
@@ -20,6 +22,7 @@ import AdminPortfolio from "./admin/AdminPortfolio";
 import AdminWebSeries from "./admin/AdminWebSeries";
 import AdminTeam from "./admin/AdminTeam";
 import AdminMessages from "./admin/AdminMessages";
+import AdminBlog from "./admin/AdminBlog";
 import "./App.css";
 
 function PublicLayout() {
@@ -47,6 +50,8 @@ function App() {
             <Route path="/portfolio" element={<Portfolio />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/web-series" element={<WebSeries />} />
+            <Route path="/blog" element={<Blog />} />
+            <Route path="/blog/:slug" element={<BlogDetail />} />
             <Route path="/privacy-policy" element={<PrivacyPolicy />} />
             <Route path="/terms-conditions" element={<TermsConditions />} />
           </Route>
@@ -61,6 +66,7 @@ function App() {
               <Route path="web-series" element={<AdminWebSeries />} />
               <Route path="team" element={<AdminTeam />} />
               <Route path="messages" element={<AdminMessages />} />
+              <Route path="blog" element={<AdminBlog />} />
             </Route>
           </Route>
         </Routes>
