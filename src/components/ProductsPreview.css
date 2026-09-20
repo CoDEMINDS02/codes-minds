@@ -1,0 +1,106 @@
+.products-preview__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-top: 48px;
+}
+
+.products-preview-card {
+  display: flex;
+  flex-direction: column;
+
+  padding: 28px;
+
+  background: var(--color-surface, rgba(255, 255, 255, 0.03));
+  border: 1px solid var(--color-border, rgba(255, 255, 255, 0.08));
+  border-radius: var(--radius-md, 16px);
+
+  transition: all var(--transition, 0.25s ease);
+}
+
+.products-preview-card:hover {
+  transform: translateY(-6px);
+  border-color: var(--color-violet, #8b5cf6);
+  box-shadow: var(--glow-soft, 0 20px 40px rgba(139, 92, 246, 0.15));
+}
+
+.products-preview-card__badge {
+  align-self: flex-start;
+
+  margin-bottom: 16px;
+  padding: 5px 12px;
+
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+
+  border-radius: 999px;
+}
+
+.products-preview-card__badge--live {
+  color: #22c55e;
+  background: rgba(34, 197, 94, 0.12);
+  border: 1px solid rgba(34, 197, 94, 0.3);
+}
+
+.products-preview-card__badge--development {
+  color: #eab308;
+  background: rgba(234, 179, 8, 0.12);
+  border: 1px solid rgba(234, 179, 8, 0.3);
+}
+
+.products-preview-card h3 {
+  margin-bottom: 8px;
+  font-size: 1.2rem;
+}
+
+.products-preview-card p {
+  margin-bottom: 18px;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: var(--color-text-muted, #a0a0aa);
+}
+
+.products-preview-card__tech {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.products-preview-card__tech-tag {
+  padding: 4px 10px;
+
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--color-text-muted, #b0b0ba);
+
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--color-border, rgba(255, 255, 255, 0.08));
+  border-radius: 999px;
+}
+
+.products-preview-card__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+
+  margin-top: auto;
+
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--color-violet, #8b5cf6);
+}
+
+.products-preview__cta {
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+}
+
+@media (max-width: 968px) {
+  .products-preview__grid {
+    grid-template-columns: 1fr;
+  }
+}

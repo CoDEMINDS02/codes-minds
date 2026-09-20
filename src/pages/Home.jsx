@@ -6,6 +6,8 @@ import ServiceCard from "../components/ServiceCard";
 import CTABanner from "../components/CTABanner";
 import TechStack from "../components/TechStack";
 import ProcessSection from "../components/ProcessSection";
+import WhatWeDeliver from "../components/WhatWeDeliver";
+import ProductsPreview from "../components/ProductsPreview";
 import { useServices } from "../hooks/useServices";
 import { usePortfolio } from "../hooks/usePortfolio";
 import { resolveImage } from "../api/config";
@@ -119,6 +121,8 @@ function Home() {
 
       <StatBar stats={homeStats} />
 
+      <WhatWeDeliver />
+
       <section className="section">
         <div className="container">
           <div className="section-header">
@@ -142,6 +146,8 @@ function Home() {
       </section>
 
       <TechStack />
+
+      <ProductsPreview />
 
       <ProcessSection />
 
