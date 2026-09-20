@@ -8,12 +8,19 @@ import {
   ShieldCheck,
   TrendingUp,
   Rocket,
+  MapPin,
+  Globe,
+  MessageSquare,
+  LifeBuoy,
 } from "lucide-react";
 import ProcessSteps from "../components/ProcessSteps";
 import CTABanner from "../components/CTABanner";
 import Team from "../components/Team";
+import FAQ from "../components/FAQ";
 import AnimatedNumber from "../components/AnimatedNumber";
+import usePageMeta from "../hooks/usePageMeta";
 import "./About.css";
+import "./AboutExtras.css";
 
 const stats = [
   {
@@ -106,13 +113,101 @@ const process = [
   },
 ];
 
+// Edit these lists to change the content of the new About sections.
+const technologies = [
+  "React",
+  "Node.js",
+  "Express",
+  "MongoDB",
+  "WordPress",
+  "Vite",
+  "JavaScript",
+  "HTML & CSS",
+  "Cloudinary",
+  "Vercel",
+];
+
+const workWithUs = [
+  {
+    icon: MapPin,
+    title: "Based in Karachi",
+    desc: "Our team is based in Karachi, Pakistan.",
+  },
+  {
+    icon: Globe,
+    title: "Remote Friendly",
+    desc: "We collaborate with clients online, wherever they are.",
+  },
+  {
+    icon: MessageSquare,
+    title: "Clear Communication",
+    desc: "You know the plan, the timeline and the progress at every stage.",
+  },
+  {
+    icon: LifeBuoy,
+    title: "Support After Launch",
+    desc: "We stay available to fix, improve and grow your project after it goes live.",
+  },
+];
+
+const faqs = [
+  {
+    q: "Where is CØDES-MINDS based?",
+    a: "We are based in Karachi, Pakistan, and we work with clients remotely.",
+  },
+  {
+    q: "What services do you offer?",
+    a: (
+      <>
+        We build websites and web applications, including WordPress websites,
+        and offer related digital services. Some services are still being
+        rolled out, so please check our{" "}
+        <Link to="/services">Services page</Link> for what is available now.
+      </>
+    ),
+  },
+  {
+    q: "What do I need to start a project?",
+    a: "Just your idea and your goals. Tell us what you want to build, share any websites you like for reference, and we will come back with a clear plan.",
+  },
+  {
+    q: "How long does a project take?",
+    a: "It depends on the size and features of the project. After we review your requirements, we share a timeline with you before any work begins.",
+  },
+  {
+    q: "Do you support the project after launch?",
+    a: "Yes. We can help with fixes, updates and improvements after your project goes live.",
+  },
+  {
+    q: "How do I get a quote?",
+    a: (
+      <>
+        Send us your details through the <Link to="/contact">contact form</Link>{" "}
+        and we will get back to you within 24 hours.
+      </>
+    ),
+  },
+];
+
 function About() {
+  usePageMeta({
+    title: "About CØDES-MINDS | Creative Digital Agency in Karachi",
+    description:
+      "CØDES-MINDS is a creative digital agency in Karachi, Pakistan. Meet the team, our values, our process and the technologies we use to build modern websites.",
+  });
+
   return (
     <>
       {/* HERO SECTION */}
       <section className="section about-hero">
         <div className="container about-hero__grid">
           <div>
+            <nav className="about-breadcrumb" aria-label="Breadcrumb">
+              <Link to="/">Home</Link>
+              <span aria-hidden="true">›</span>
+              <span aria-current="page">About</span>
+            </nav>
+
             <span className="eyebrow">ABOUT US</span>
 
             <h1>
@@ -363,6 +458,33 @@ function About() {
         </div>
       </section>
 
+      {/* TECHNOLOGIES */}
+      <section className="section about-tech">
+        <div className="container">
+          <div className="section-header">
+            <span className="eyebrow">TECHNOLOGIES</span>
+
+            <h2>
+              Built With{" "}
+              <span className="gradient-text">Modern Technologies</span>
+            </h2>
+
+            <p>
+              A modern, proven stack that keeps your website fast, secure and
+              easy to grow.
+            </p>
+          </div>
+
+          <div className="about-tech__list">
+            {technologies.map((tech) => (
+              <span key={tech} className="about-tech__chip">
+                {tech}
+              </span>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* PROCESS */}
       <section className="section">
         <ProcessSteps
@@ -370,6 +492,52 @@ function About() {
           eyebrow="OUR PROCESS"
           title="Our Simple Process For Outstanding"
           highlight="Results"
+        />
+      </section>
+
+      {/* HOW WE WORK WITH YOU */}
+      <section className="section about-how">
+        <div className="container">
+          <div className="section-header">
+            <span className="eyebrow">WORKING WITH US</span>
+
+            <h2>
+              How We <span className="gradient-text">Work With You</span>
+            </h2>
+
+            <p>
+              Simple, open and reliable — from your first message to long after
+              launch.
+            </p>
+          </div>
+
+          <div className="about-how__grid">
+            {workWithUs.map((item) => {
+              const Icon = item.icon;
+
+              return (
+                <div key={item.title} className="about-how__card">
+                  <div className="about-how__icon">
+                    <Icon size={22} />
+                  </div>
+
+                  <h4>{item.title}</h4>
+                  <p>{item.desc}</p>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ */}
+      <section className="section about-faq">
+        <FAQ
+          items={faqs}
+          eyebrow="FAQ"
+          title="Frequently Asked"
+          highlight="Questions"
+          subtitle="Quick answers about who we are and how we work."
         />
       </section>
 

@@ -1,0 +1,109 @@
+/* Breadcrumb */
+.about-breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 18px;
+  color: var(--color-text-dim);
+  font-size: 0.82rem;
+}
+
+.about-breadcrumb a {
+  color: var(--color-text-muted);
+  transition: color var(--transition);
+}
+
+.about-breadcrumb a:hover {
+  color: var(--color-cyan);
+}
+
+.about-breadcrumb [aria-current="page"] {
+  color: var(--color-text);
+}
+
+/* Technologies */
+.about-tech__list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  max-width: 860px;
+  margin: 0 auto;
+}
+
+.about-tech__chip {
+  padding: 10px 20px;
+  border: 1px solid var(--color-border);
+  border-radius: 999px;
+  background: var(--color-surface);
+  color: var(--color-text);
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition:
+    border-color var(--transition),
+    transform var(--transition),
+    box-shadow var(--transition);
+}
+
+.about-tech__chip:hover {
+  transform: translateY(-2px);
+  border-color: rgba(139, 92, 246, 0.6);
+  box-shadow: var(--glow-soft);
+}
+
+/* How we work with you */
+.about-how__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.about-how__card {
+  padding: 26px 22px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-surface);
+  transition:
+    border-color var(--transition),
+    transform var(--transition);
+}
+
+.about-how__card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(139, 92, 246, 0.5);
+}
+
+.about-how__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 46px;
+  height: 46px;
+  margin-bottom: 16px;
+  border-radius: 12px;
+  background: rgba(139, 92, 246, 0.15);
+  color: var(--color-violet);
+}
+
+.about-how__card h4 {
+  margin-bottom: 8px;
+  font-size: 1rem;
+}
+
+.about-how__card p {
+  color: var(--color-text-muted);
+  font-size: 0.9rem;
+  line-height: 1.65;
+}
+
+@media (max-width: 1024px) {
+  .about-how__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 560px) {
+  .about-how__grid {
+    grid-template-columns: 1fr;
+  }
+}
