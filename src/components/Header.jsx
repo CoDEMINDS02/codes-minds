@@ -148,6 +148,9 @@ function Header() {
                        <NavLink to="/blog" className="header__link">
               Blog
             </NavLink>
+            <NavLink to="/products" className="header__link">
+  Products
+</NavLink>
             <NavLink to="/contact" className="header__link">
               Contact
             </NavLink>
