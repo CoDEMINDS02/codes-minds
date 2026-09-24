@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { submitContact } from "../api/contact";
+import ConnectSection from "../components/ConnectSection";
 import {
   Phone,
   Mail,
@@ -199,6 +200,10 @@ function Contact() {
             )}
           </div>
         </div>
+      </section>
+
+            <section className="section">
+        <ConnectSection />
       </section>
 
       <section className="section contact-trust">
