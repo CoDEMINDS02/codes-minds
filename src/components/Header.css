@@ -33,9 +33,9 @@
 }
 
 .header__logo img {
-  height: 52px;
+  height: 42px;       /* apni pasand ki height rakho, jaisa pehle logo ka tha */
   width: auto;
-  display: block;
+  object-fit: contain;
 }
 
 /* ================= NAVIGATION ================= */
@@ -405,5 +405,52 @@
   .header__nav {
     width: 88vw;
     padding: 90px 20px 30px;
+  }
+}
+/* ================= SERVICES MEGA-MENU (add below existing .header__dropdown-menu rules) ================= */
+
+.header__dropdown-menu--mega {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(180px, 1fr));
+  gap: 4px 28px;
+
+  min-width: 620px;
+  padding: 20px;
+}
+
+.header__dropdown-col {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.header__dropdown-col-title {
+  padding: 6px 12px 10px;
+
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-violet, #8b5cf6);
+}
+
+/* ================= MOBILE: collapse mega-menu back to a single column ================= */
+
+@media (max-width: 968px) {
+  .header__dropdown-menu--mega {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+
+    min-width: unset;
+    padding: 8px;
+  }
+
+  .header__dropdown-col-title {
+    padding-top: 14px;
+  }
+
+  .header__dropdown-col:first-child .header__dropdown-col-title {
+    padding-top: 6px;
   }
 }

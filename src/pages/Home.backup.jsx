@@ -9,6 +9,7 @@ import TechStack from "../components/TechStack";
 import ProcessSection from "../components/ProcessSection";
 import WhatWeDeliver from "../components/WhatWeDeliver";
 import ProductsPreview from "../components/ProductsPreview";
+import HeroVisual from "../components/HeroVisual";
 
 import { useServices } from "../hooks/useServices";
 import { usePortfolio } from "../hooks/usePortfolio";
@@ -21,12 +22,6 @@ const homeStats = [
   { value: "5+", label: "Happy Clients" },
   { value: "1+", label: "Years Experience" },
   { value: "99%", label: "Client Satisfaction" },
-];
-
-const heroStats = [
-  { value: "14+", label: "Projects" },
-  { value: "5+", label: "Clients" },
-  { value: "99%", label: "Satisfaction" },
 ];
 
 const testimonials = [
@@ -50,121 +45,50 @@ const testimonials = [
   },
 ];
 
-const heroStyles = {
-  section: {
-    position: "relative",
-    overflow: "hidden",
-    minHeight: "88vh",
-    display: "flex",
-    alignItems: "center",
-  },
-  video: {
-    position: "absolute",
-    inset: 0,
-    width: "100%",
-    height: "100%",
-    objectFit: "cover",
-    transform: "scale(1.15)",
-    zIndex: 0,
-  },
-  bottomFade: {
-    position: "absolute",
-    left: 0,
-    right: 0,
-    bottom: 0,
-    height: "140px",
-    background:
-      "linear-gradient(180deg, rgba(7, 5, 15, 0) 0%, var(--color-bg, #07050f) 100%)",
-    zIndex: 2,
-    pointerEvents: "none",
-  },
-  grid: {
-    position: "relative",
-    zIndex: 3,
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "space-between",
-    gap: "40px",
-    width: "100%",
-  },
-  content: {
-    maxWidth: "640px",
-  },
-};
-
 function Home() {
   const { services } = useServices();
   const { projects } = usePortfolio();
 
   return (
     <>
-      <style>{`
-        .hero-bg-overlay {
-          position: absolute;
-          inset: 0;
-          z-index: 1;
-          background: linear-gradient(
-            90deg,
-            rgba(8, 4, 20, 0.9) 0%,
-            rgba(8, 4, 20, 0.6) 40%,
-            rgba(8, 4, 20, 0.1) 100%
-          );
-        }
-        .hero-stats-card {
-          display: flex;
-          gap: 28px;
-          padding: 22px 28px;
-          border-radius: 18px;
-          background: rgba(15, 10, 35, 0.55);
-          border: 1px solid rgba(139, 92, 246, 0.35);
-          backdrop-filter: blur(12px);
-          -webkit-backdrop-filter: blur(12px);
-          box-shadow: 0 0 30px rgba(124, 58, 237, 0.25);
-          align-self: flex-end;
-          margin-bottom: 40px;
-        }
-        .hero-stats-card__item {
-          text-align: center;
-        }
-        .hero-stats-card__item strong {
-          display: block;
-          font-size: 1.6rem;
-          font-weight: 700;
-          background: linear-gradient(90deg, #22d3ee, #a855f7);
-          -webkit-background-clip: text;
-          background-clip: text;
-          color: transparent;
-        }
-        .hero-stats-card__item span {
-          font-size: 0.72rem;
-          letter-spacing: 0.08em;
-          text-transform: uppercase;
-          color: rgba(255, 255, 255, 0.75);
-        }
-        @media (max-width: 900px) {
-          .hero-bg-overlay {
-            background: rgba(8, 4, 20, 0.75);
-          }
-          .hero-stats-card {
-            display: none;
-          }
-        }
-      `}</style>
+      {/* =====================================================
+          HERO SECTION (new video as background)
+          ===================================================== */}
 
-      <section className="home-hero section" style={heroStyles.section}>
+      <section
+        className="home-hero section"
+        style={{ position: "relative", overflow: "hidden" }}
+      >
         <video
           src="/videos/intro.mp4"
           autoPlay
           muted
           loop
           playsInline
-          style={heroStyles.video}
+          style={{
+            position: "absolute",
+            inset: 0,
+            width: "100%",
+            height: "100%",
+            objectFit: "cover",
+            zIndex: 0,
+          }}
         />
-        <div className="hero-bg-overlay" />
-        <div style={heroStyles.bottomFade} />
+        <div
+          style={{
+            position: "absolute",
+            inset: 0,
+            zIndex: 1,
+            background: "rgba(8, 4, 20, 0.55)",
+          }}
+        />
 
-        <div className="container" style={heroStyles.grid}>
-          <div className="home-hero__content" style={heroStyles.content}>
+        <div
+          className="container home-hero__grid"
+          style={{ position: "relative", zIndex: 2 }}
+        >
+          {/* LEFT — HERO CONTENT */}
+          <div className="home-hero__content">
             <span className="badge">CØDES-MINDS · DIGITAL AGENCY</span>
 
             <h1>
@@ -209,16 +133,16 @@ function Home() {
             </div>
           </div>
 
-          <div className="hero-stats-card">
-            {heroStats.map((s) => (
-              <div key={s.label} className="hero-stats-card__item">
-                <strong>{s.value}</strong>
-                <span>{s.label}</span>
-              </div>
-            ))}
+          {/* RIGHT — PREMIUM HERO VISUAL */}
+          <div className="home-hero__visual">
+            <HeroVisual />
           </div>
         </div>
       </section>
+
+      {/* =====================================================
+          INTRO VIDEO (previous video)
+          ===================================================== */}
 
       <section className="section home-intro-video">
         <div className="container">
@@ -248,9 +172,21 @@ function Home() {
         </div>
       </section>
 
+      {/* =====================================================
+          STATS
+          ===================================================== */}
+
       <StatBar stats={homeStats} />
 
+      {/* =====================================================
+          WHAT WE DELIVER
+          ===================================================== */}
+
       <WhatWeDeliver />
+
+      {/* =====================================================
+          SERVICES
+          ===================================================== */}
 
       <section className="section">
         <div className="container">
@@ -276,11 +212,27 @@ function Home() {
         </div>
       </section>
 
+      {/* =====================================================
+          TECHNOLOGY STACK
+          ===================================================== */}
+
       <TechStack />
+
+      {/* =====================================================
+          PRODUCTS
+          ===================================================== */}
 
       <ProductsPreview />
 
+      {/* =====================================================
+          PROCESS
+          ===================================================== */}
+
       <ProcessSection />
+
+      {/* =====================================================
+          PROJECTS
+          ===================================================== */}
 
       <section className="section home-projects">
         <div className="container">
@@ -327,6 +279,10 @@ function Home() {
         </div>
       </section>
 
+      {/* =====================================================
+          TESTIMONIALS
+          ===================================================== */}
+
       <section className="section home-testimonials">
         <div className="container">
           <div className="section-header">
@@ -367,6 +323,10 @@ function Home() {
         </div>
       </section>
 
+      {/* =====================================================
+          CONTACT
+          ===================================================== */}
+
       <section
         id="contact"
         className="section"
@@ -374,6 +334,10 @@ function Home() {
       >
         <ContactForm />
       </section>
+
+      {/* =====================================================
+          CTA
+          ===================================================== */}
 
       <section className="section home-cta">
         <CTABanner />

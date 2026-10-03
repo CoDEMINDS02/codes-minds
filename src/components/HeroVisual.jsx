@@ -1,174 +1,133 @@
 import {
   Code2,
   Palette,
-  Rocket,
-  Monitor,
-  Smartphone,
+  BrainCircuit,
+  Layers3,
+  ArrowUpRight,
   Sparkles,
 } from "lucide-react";
 import "./HeroVisual.css";
 
+const services = [
+  {
+    icon: Code2,
+    title: "Web Development",
+    text: "Modern & scalable",
+    className: "hero-orbit-card--web",
+  },
+  {
+    icon: Palette,
+    title: "UI/UX Design",
+    text: "Beautiful experiences",
+    className: "hero-orbit-card--design",
+  },
+  {
+    icon: BrainCircuit,
+    title: "AI Solutions",
+    text: "Smart digital systems",
+    className: "hero-orbit-card--ai",
+  },
+  {
+    icon: Layers3,
+    title: "Full Stack",
+    text: "Complete solutions",
+    className: "hero-orbit-card--stack",
+  },
+];
+
 function HeroVisual() {
   return (
-    <div className="hero-visual">
-      {/* Background Glow */}
-      <div className="hero-visual__glow hero-visual__glow--one" />
-      <div className="hero-visual__glow hero-visual__glow--two" />
+    <div className="cm-hero-visual">
+      {/* Ambient background */}
+      <div className="cm-hero-glow cm-hero-glow--one" />
+      <div className="cm-hero-glow cm-hero-glow--two" />
 
-      {/* Main Browser */}
-      <div className="hero-browser">
-        <div className="hero-browser__topbar">
-          <div className="hero-browser__dots">
-            <span />
-            <span />
-            <span />
-          </div>
+      {/* Tech grid */}
+      <div className="cm-hero-grid" />
 
-          <div className="hero-browser__address">
-            <span className="hero-browser__lock">●</span>
-            codes-minds.com
-          </div>
-        </div>
+      {/* Orbit rings */}
+      <div className="cm-orbit cm-orbit--outer">
+        <span className="cm-orbit-dot cm-orbit-dot--one" />
+        <span className="cm-orbit-dot cm-orbit-dot--two" />
+      </div>
 
-        <div className="hero-browser__content">
-          <span className="hero-browser__eyebrow">DIGITAL EXPERIENCE</span>
+      <div className="cm-orbit cm-orbit--inner">
+        <span className="cm-orbit-dot cm-orbit-dot--three" />
+      </div>
 
-          <h3>
-            Turning Ideas Into
-            <span> Digital Reality.</span>
-          </h3>
+      {/* Floating service cards */}
+      {services.map((service) => {
+        const Icon = service.icon;
 
-          <p>
-            Modern websites and powerful digital solutions built to help
-            businesses grow and succeed.
-          </p>
-
-          <button type="button">Explore Project</button>
-
-          <div className="hero-browser__stats">
-            <div>
-              <strong>150+</strong>
-              <span>Projects</span>
+        return (
+          <div
+            key={service.title}
+            className={`cm-hero-service-card ${service.className}`}
+          >
+            <div className="cm-hero-service-icon">
+              <Icon size={18} />
             </div>
 
             <div>
-              <strong>80+</strong>
-              <span>Clients</span>
-            </div>
-
-            <div>
-              <strong>99%</strong>
-              <span>Satisfaction</span>
+              <strong>{service.title}</strong>
+              <span>{service.text}</span>
             </div>
           </div>
+        );
+      })}
+
+      {/* Main CM identity */}
+      <div className="cm-core">
+        <div className="cm-core__halo" />
+
+        <div className="cm-core__symbol">
+          <span>C</span>
+          <span className="cm-core__slash">/</span>
+          <span>M</span>
+        </div>
+
+        <div className="cm-core__spark">
+          <Sparkles size={13} />
+        </div>
+
+        <div className="cm-core__label">
+          <span>CØDES-MINDS</span>
+          <small>IDEAS × CODE × IMPACT</small>
         </div>
       </div>
 
-      {/* Web Development Card */}
-      <div className="floating-card floating-card--web">
-        <div className="floating-card__icon">
-          <Code2 size={22} />
-        </div>
+      {/* Small floating code element */}
+      <div className="cm-code-pill">
+        <span>&lt;/&gt;</span>
+        <span>Build something remarkable</span>
+      </div>
 
+      {/* Bottom mini stats */}
+      <div className="cm-mini-stats">
         <div>
-          <h4>Web Development</h4>
-          <p>Modern. Fast. Scalable.</p>
-        </div>
-      </div>
-
-      {/* UI UX Card */}
-      <div className="floating-card floating-card--design">
-        <div className="floating-card__icon floating-card__icon--pink">
-          <Palette size={21} />
-        </div>
-
-        <div>
-          <h4>UI/UX Design</h4>
-          <p>Beautiful experiences.</p>
-        </div>
-      </div>
-
-      {/* Full Stack Card */}
-      <div className="floating-card floating-card--fullstack">
-        <div className="floating-card__icon floating-card__icon--blue">
-          <Rocket size={22} />
-        </div>
-
-        <div>
-          <h4>Full Stack Solutions</h4>
-          <p>From idea to deployment.</p>
-        </div>
-      </div>
-
-      {/* Phone Card */}
-      <div className="hero-phone">
-        <div className="hero-phone__speaker" />
-
-        <div className="hero-phone__screen">
-          <div className="hero-phone__small-dot" />
-
-          <span>Digital</span>
-
-          <h4>
-            Creative
-            <br />
-            Solutions
-          </h4>
-
-          <div className="hero-phone__line" />
-
-          <div className="hero-phone__blocks">
-            <span />
-            <span />
-          </div>
-        </div>
-      </div>
-
-      {/* Screen Card */}
-      <div className="hero-screen-card">
-        <Monitor size={40} />
-        <span>Creative Web</span>
-      </div>
-
-      {/* Code Card */}
-      <div className="hero-code-card">
-        <div className="hero-code-card__header">
-          <Code2 size={15} />
-          <span>Clean. Scalable. Efficient.</span>
-        </div>
-
-        <div className="hero-code-card__line">
-          <span>const</span> ideas = [
-        </div>
-
-        <div className="hero-code-card__item">'Design',</div>
-
-        <div className="hero-code-card__item">'Development',</div>
-
-        <div className="hero-code-card__item">'Success'</div>
-
-        <div className="hero-code-card__line">];</div>
-      </div>
-
-      {/* Bottom Feature Icons */}
-      <div className="hero-feature-bar">
-        <div>
-          <Rocket size={22} />
-          <strong>150+</strong>
+          <strong>14+</strong>
           <span>Projects</span>
         </div>
 
+        <i />
+
         <div>
-          <Smartphone size={22} />
-          <strong>80+</strong>
+          <strong>5+</strong>
           <span>Clients</span>
         </div>
 
+        <i />
+
         <div>
-          <Sparkles size={22} />
           <strong>99%</strong>
-          <span>Success</span>
+          <span>Satisfaction</span>
         </div>
+      </div>
+
+      {/* Explore indicator */}
+      <div className="cm-explore">
+        <span>EXPLORE</span>
+        <ArrowUpRight size={14} />
       </div>
     </div>
   );

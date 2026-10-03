@@ -1,0 +1,45 @@
+.ambient-orb {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 0;
+  width: 620px;
+  height: 620px;
+  pointer-events: none;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle at 35% 35%,
+    rgba(34, 211, 238, 0.75),
+    rgba(139, 92, 246, 0.6) 45%,
+    rgba(139, 92, 246, 0) 72%
+  );
+  filter: blur(50px);
+  opacity: 0.85;
+  transform: translate(-50%, -50%);
+  animation: ambientOrbDrift 12s ease-in-out infinite alternate;
+}
+
+@keyframes ambientOrbDrift {
+  0% {
+    transform: translate(-54%, -54%) scale(1);
+  }
+
+  100% {
+    transform: translate(-46%, -46%) scale(1.08);
+  }
+}
+
+@media (max-width: 768px) {
+  .ambient-orb {
+    width: 360px;
+    height: 360px;
+    filter: blur(46px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ambient-orb {
+    animation: none;
+    transform: translate(-50%, -50%);
+  }
+}

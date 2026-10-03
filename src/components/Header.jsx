@@ -2,8 +2,50 @@ import { useState, useEffect } from "react";
 import { NavLink, Link, useLocation } from "react-router-dom";
 import { ChevronDown, Menu, X, ArrowRight } from "lucide-react";
 import { useServices } from "../hooks/useServices";
-import logo from "../assets/logo.png";
 import "./Header.css";
+
+// Groups flat service list into categories, similar to Techies Technologies mega-menu.
+// Matching is done on the service title so new services from the backend fall
+// into the right bucket automatically without extra backend changes.
+const SERVICE_CATEGORY_ORDER = ["Development", "Design & Creative", "Growth & Support"];
+
+function getServiceCategory(title = "") {
+  const t = title.toLowerCase();
+
+  if (
+    t.includes("web") ||
+    t.includes("mobile") ||
+    t.includes("app") ||
+    t.includes("e-commerce") ||
+    t.includes("ecommerce")
+  ) {
+    return "Development";
+  }
+
+  if (
+    t.includes("ui") ||
+    t.includes("ux") ||
+    t.includes("design") ||
+    t.includes("graphic") ||
+    t.includes("video")
+  ) {
+    return "Design & Creative";
+  }
+
+  return "Growth & Support";
+}
+
+function groupServicesByCategory(services) {
+  const grouped = {};
+
+  services.forEach((service) => {
+    const category = getServiceCategory(service.title);
+    if (!grouped[category]) grouped[category] = [];
+    grouped[category].push(service);
+  });
+
+  return grouped;
+}
 
 function Header() {
   const { services } = useServices();
@@ -17,6 +59,8 @@ function Header() {
   );
 
   const location = useLocation();
+
+  const groupedServices = groupServicesByCategory(services || []);
 
   useEffect(() => {
     const onScroll = () => {
@@ -86,7 +130,7 @@ function Header() {
         <div className="container header__inner">
           {/* LOGO */}
           <Link to="/" className="header__logo">
-            <img src={logo} alt="CØDES-MINDS" />
+            <img src="/codesminds-logo-v3.svg" alt="CodesMinds" />
           </Link>
 
           {/* NAVIGATION */}
@@ -101,7 +145,7 @@ function Header() {
               About Us
             </NavLink>
 
-            {/* SERVICES DROPDOWN */}
+            {/* SERVICES MEGA-MENU */}
             <div
               className={`header__dropdown ${
                 servicesOpen ? "header__dropdown--open" : ""
@@ -122,22 +166,31 @@ function Header() {
               </NavLink>
 
               {servicesOpen && (
-                <div className="header__dropdown-menu">
-                  {services.map((service) => {
-                    const Icon = service.icon;
+                <div className="header__dropdown-menu header__dropdown-menu--mega">
+                  {SERVICE_CATEGORY_ORDER.filter(
+                    (category) => groupedServices[category]?.length,
+                  ).map((category) => (
+                    <div className="header__dropdown-col" key={category}>
+                      <div className="header__dropdown-col-title">
+                        {category}
+                      </div>
 
-                    return (
-                      <Link
-                        key={service.slug}
-                        to={`/services/${service.slug}`}
-                        className="header__dropdown-item"
-                      >
-                        <Icon size={16} />
+                      {groupedServices[category].map((service) => {
+                        const Icon = service.icon;
 
-                        <span>{service.title}</span>
-                      </Link>
-                    );
-                  })}
+                        return (
+                          <Link
+                            key={service.slug}
+                            to={`/services/${service.slug}`}
+                            className="header__dropdown-item"
+                          >
+                            {Icon && <Icon size={16} />}
+                            <span>{service.title}</span>
+                          </Link>
+                        );
+                      })}
+                    </div>
+                  ))}
                 </div>
               )}
             </div>
